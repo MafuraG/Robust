@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>830</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="3" column="1" colspan="3">
+     <layout class="QVBoxLayout" name="vLayout_k">
+      <item>
+       <widget class="QLabel" name="label_k">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;k&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_k"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1" colspan="3">
+     <layout class="QVBoxLayout" name="vLayout_polynomial">
+      <item>
+       <widget class="QLabel" name="label_polynomial">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Polynomial&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_polynomial"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="4" rowspan="6">
+     <layout class="QVBoxLayout" name="vLayout_root">
+      <item>
+       <widget class="QLabel" name="label_root">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;root&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_root"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="3">
+     <layout class="QHBoxLayout" name="hLayout_q">
+      <item>
+       <widget class="QLabel" name="label_q1">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;q&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_q"/>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="1" colspan="3">
+     <layout class="QVBoxLayout" name="vLayout_k_2_qk">
+      <item>
+       <widget class="QLabel" name="label_k_2_qk">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;k_2_qk&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_k_2_qk"/>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="1" colspan="3">
+     <layout class="QVBoxLayout" name="vLayout_free">
+      <item>
+       <widget class="QLabel" name="label_free">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;free&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_free"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" rowspan="6">
+     <layout class="QVBoxLayout" name="vLayout_coeff">
+      <item>
+       <widget class="QLabel" name="label_coeff">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Coeff&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_coeff"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1" colspan="3">
+     <layout class="QVBoxLayout" name="vLayout_2_qk">
+      <item>
+       <widget class="QLabel" name="label_2_qk">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2_qk&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTableView" name="tableView_2_qk"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2">
+     <layout class="QHBoxLayout" name="hLayout_k">
+      <item>
+       <widget class="QLabel" name="label_k1">
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;k&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_k"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>830</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCommands">
+    <property name="title">
+     <string>Commands</string>
+    </property>
+    <addaction name="actionLoad_a_and_b"/>
+    <addaction name="actionSave_model"/>
+    <addaction name="separator"/>
+    <addaction name="actionTsypkin_Locus"/>
+    <addaction name="actionRobust_Popov_Locus"/>
+    <addaction name="separator"/>
+    <addaction name="actionRoot_Locus"/>
+    <addaction name="actionClassic_Root_Locus"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout_Program"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionEdit_Model"/>
+   </widget>
+   <addaction name="menuCommands"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionGet_Polynomial"/>
+   <addaction name="separator"/>
+   <addaction name="actionClear"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLoad_a_and_b">
+   <property name="text">
+    <string>Load model</string>
+   </property>
+  </action>
+  <action name="actionRoot_Locus">
+   <property name="text">
+    <string>Tsypkin Root Locus</string>
+   </property>
+  </action>
+  <action name="actionTsypkin_Locus">
+   <property name="text">
+    <string>Popov Locus</string>
+   </property>
+  </action>
+  <action name="actionClassic_Root_Locus">
+   <property name="text">
+    <string>Classic Root Locus</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionAbout_Program">
+   <property name="text">
+    <string>About Program</string>
+   </property>
+  </action>
+  <action name="actionGet_Polynomial">
+   <property name="text">
+    <string>Run</string>
+   </property>
+   <property name="toolTip">
+    <string>Get characteristic polynomial</string>
+   </property>
+  </action>
+  <action name="actionSave_model">
+   <property name="text">
+    <string>Save model</string>
+   </property>
+  </action>
+  <action name="actionEdit_Model">
+   <property name="text">
+    <string>Edit Model</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+   <property name="toolTip">
+    <string>Clear a and b</string>
+   </property>
+  </action>
+  <action name="actionRobust_Popov_Locus">
+   <property name="text">
+    <string>Robust Popov Locus</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
