@@ -201,8 +201,22 @@ double w_polynomial::get_y(double x1, double y1, double x2, double y2, double x0
     return y;
 }
 
+double w_polynomial::get_slope(double ax, double ay, double bx, double by){
+    double deltaY = by - ay;
+    double deltaX = bx - ax;
+
+    double slope = deltaY/deltaX ;
+
+    return slope;
+}
+
 bool w_polynomial::is_left_side(double ax, double ay, double bx, double by, double cx, double cy){
-    return ((bx - ax)*(cy - ay) - (by - ay)*(cx - ax)) > 0;
+    double slope = get_slope(ax,ay,bx,by);
+
+    if (slope > 0)
+        return ((bx - ax)*(cy - ay) - (by - ay)*(cx - ax)) > 0;
+    else
+        return ((bx - ax)*(cy - ay) - (by - ay)*(cx - ax)) < 0;
 }
 
 double w_polynomial::get_min(QVector<double> &v)

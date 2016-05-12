@@ -90,6 +90,7 @@ public:
     double get_x(double x1, double y1, double x2, double y2, double x0, double y0);
     double get_y(double x1, double y1, double x2, double y2, double x0, double y0);
     bool AlmostEqualRelativeOrAbsolute(double A, double B, double maxRelativeError, double maxAbsoluteError);
+    double get_slope(double ax, double ay, double bx, double by);
 private:
 	
 	
