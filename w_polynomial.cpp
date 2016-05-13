@@ -58,6 +58,7 @@ void w_polynomial::test_method()
 	w_polynomial::b_min[0] = 0;
 }
 
+
 void w_polynomial::generate_robust_tsypkin_locus(QList<plot_data > &locus,
                                                  const std::vector<double> &amin, const std::vector<double> &amax,
                                                  const std::vector<double> &bmin, const std::vector<double> &bmax,
@@ -135,6 +136,7 @@ void w_polynomial::generate_tsypkin_locus(plot_data &p, const std::vector<double
     p.setP_y(locus[3]);
     p.setMargin_x(locus[4]);
     p.setMargin_y(locus[5]);
+
     determine_stability(p);
 }
 
@@ -149,27 +151,36 @@ void w_polynomial::determine_stability(plot_data &data)
     QVector<double> x = data.getX(),y = data.getY();
     double ax = data.getP_x()[0], ay = data.getP_y()[0];
     double bx = data.getP_x()[2], by = data.getP_y()[2];
-    double min_d = 1000, d;
+    double min_d = 1000, max_d = 0, d;
+    data.setSystem_stable(true);
     for (int i = 0 ; i < data.getX().length();i++){
         x0 = x[i]; y0 = y[i];
         //d = abs(A * x0 + B * y0 + C) / sqrt(A^2 + B^2);
-        d = get_distance(ax,ay,bx,by,x0,y0);
-        if (d < min_d) min_d = d;
-        data.setMin_d(min_d);
+        d = get_distance(ax,ay,bx,by,x0,y0);       
+
         if (w_polynomial::is_left_side(ax,ay,bx,by,x0,y0) == true){
-            data.setMin_d(0);
-            data.setSystem_stable(false);
-            return;
+            //data.setMin_d(0);
+            if (d > max_d) {
+                max_d = d;
+                data.setMax_d(max_d);
+                data.setLineStart((float)x0,(float)y0);
+                data.setSystem_stable(false);
+            }
+        }else {
+            if (d < min_d){
+                min_d = d;
+                data.setLineStart((float)x0,(float)y0);
+                data.setMin_d(min_d);
+            }
         }
-    }
-    data.setSystem_stable(true);
+    }    
 }
 
 double w_polynomial::get_distance(double x1, double y1, double x2, double y2, double x0, double y0){
     //A=(y1−y2)A=(y1−y2) , B=x2−x1B=x2−x1 and C=x1y2−x2y1C=x1y2−x2y1.
     double A = y1 - y2 ;
     double B = x2 - x1 ;
-    double C = x1 * y2 - x2 * y1;
+    //double C = x1 * y2 - x2 * y1;
     //double d = abs(A * x0 + B * y0 + C) / sqrt(pow(A,2) + pow(B,2));
     QVector2D pl;
     pl.setX((float)x1);
@@ -186,17 +197,17 @@ double w_polynomial::get_distance(double x1, double y1, double x2, double y2, do
 }
 
 double w_polynomial::get_x(double x1, double y1, double x2, double y2, double x0, double y0){
-    double A = y1 - y2 ;
-    double B = x2 - x1 ;
-    double C = x1 * y2 - x2 * y1;
+    //double A = y1 - y2 ;
+    //double B = x2 - x1 ;
+    //double C = x1 * y2 - x2 * y1;
     double x = 0;
     return x;
 }
 
 double w_polynomial::get_y(double x1, double y1, double x2, double y2, double x0, double y0){
-    double A = y1 - y2 ;
-    double B = x2 - x1 ;
-    double C = x1 * y2 - x2 * y1;
+    //double A = y1 - y2 ;
+    //double B = x2 - x1 ;
+    //double C = x1 * y2 - x2 * y1;
     double y = 0;
     return y;
 }

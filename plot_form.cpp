@@ -78,8 +78,8 @@ void plot_form::plot_tyspkin_locus(plot_data &locus, const bool replot, const QS
     L->setVisible(true);
     L->setFont(QFont("Helvetica",9));
 
+    is_plot_stable(locus);
     plot_tyspkin_locus(locus,Qt::black,2,replot,locus_name);
-
 }
 
 void plot_form::plot_robust_tsypkin_locus(QList<plot_data> locus)
@@ -89,17 +89,24 @@ void plot_form::plot_robust_tsypkin_locus(QList<plot_data> locus)
     L->setVisible(true);
     L->setFont(QFont("Helvetica",9));
 
+
     plot_tyspkin_locus(locus[0],Qt::black,2,false,"P1");
     plot_tyspkin_locus(locus[1],Qt::magenta,2,false,"P2");
     plot_tyspkin_locus(locus[2],Qt::blue,2,false,"P3");
     plot_tyspkin_locus(locus[3],Qt::green,2,true,"P4");
 
+    is_plot_stable(locus);
+
+    for(int i = 0; i < locus.size();i++){
+        plot_stability_margin(locus[i]);
+    }
+
 }
 
-void plot_form::plot_tyspkin_locus(const plot_data &locus, const Qt::GlobalColor c, const double w, const bool replot, const QString locus_name)
+void plot_form::plot_tyspkin_locus(plot_data &locus, const Qt::GlobalColor c, const double w, const bool replot, const QString locus_name)
 {
     // Check if stable
-    is_plot_stable(locus);
+    //is_plot_stable(locus);
     QCPLegend *L = ui->customPlot->legend;
     L->setVisible(true);
     L->setFont(QFont("Helvetica",9));
@@ -141,7 +148,9 @@ void plot_form::plot_tyspkin_locus(const plot_data &locus, const Qt::GlobalColor
         g->setLineStyle(QCPGraph::lsLine);
         g->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDot,c,2));
         g->setPen(QPen(c,w));
-    }    
+    }
+
+    //plot_stability_margin(locus);
 
     if (replot == true)
     {
@@ -167,6 +176,28 @@ void plot_form::plot_popov_line(const QVector<double> &x , const QVector<double>
 
 }
 
+void plot_form::plot_stability_margin(plot_data &locus){
+    QCPGraph *g = ui->customPlot->addGraph();
+    QVector<double> x,y;
+    QVector2D start, end;
+
+    start = locus.getLineStart();
+    end = locus.getLineEnd();
+
+    x.append((double)start.x());
+    x.append((double)end.x());
+
+    y.append((double)start.y());
+    y.append((double)end.y());
+
+    g->setData(x,y);
+    g->setLineStyle(QCPGraph::lsLine);
+    g->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCrossCircle,Qt::cyan,4));
+    g->setPen(QPen(Qt::black));
+    g->setName("Stability Margin");
+    ui->customPlot->rescaleAxes();
+}
+
 void plot_form::set_plot_margin(const QVector<double> &margin_x, const QVector<double> &margin_y)
 {
     //set margins
@@ -179,13 +210,49 @@ void plot_form::set_plot_margin(const QVector<double> &margin_x, const QVector<d
 void plot_form::is_plot_stable(const plot_data &locus)
 {
     if (locus.getSystem_stable() == true){
-        ui->labelConclusion->setText(QString("Система стабильная - ") + QString::number(locus.getMin_d()));
+        ui->labelConclusion->setText(QString("Система стабильная. Минимальное расстояние от линии Попова : ") + QString::number(locus.getMin_d()));
     }
     else{
         ui->labelConclusion->setText("Система не стабильная");
     }
 
 }
+
+void plot_form::is_plot_stable(const QList<plot_data> &locus)
+{
+    if (is_robust_stable(locus) == true){
+        ui->labelConclusion->setText(QString("Система стабильная. Минимальное расстояние от линии Попова : ") + QString::number(get_stability_margin(locus)));
+    }
+    else{
+        ui->labelConclusion->setText("Система не стабильная");
+    }
+
+}
+
+bool plot_form::is_robust_stable(const QList<plot_data> &locus){
+    bool is_robust_stable = true;
+    for (int i = 0 ; i < locus.size(); i++){
+        if (locus[i].getSystem_stable() == false){
+            is_robust_stable = false;
+            break;
+        }
+    }
+    return is_robust_stable;
+}
+
+double plot_form::get_stability_margin(const QList<plot_data> &locus){
+    if (is_robust_stable(locus) == false ) return 0;
+    double stability_margin = 1000000000;
+    for (int i = 0 ; i < locus.size(); i++){
+        if (locus[i].getSystem_stable() == true){
+            double margin = locus[i].getMin_d();
+            if (margin < stability_margin ) stability_margin = margin;
+        }
+    }
+
+    return stability_margin;
+}
+
 
 void plot_form::split_locus_by_quadrants(QVector<double> &x, QVector<double> &y, QList<QVector<double> > &quadrants)
 {

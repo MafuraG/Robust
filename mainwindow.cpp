@@ -472,8 +472,11 @@ void MainWindow::on_actionTsypkin_Locus_triggered()
     w.generate_tsypkin_locus(locus,w_polynomial::a,w_polynomial::b,w_polynomial::k,w_polynomial::q);
 
     plot->set_plot_margin(locus.getMargin_x(),locus.getMargin_y());
-    plot->plot_tyspkin_locus(locus,Qt::black,2,true,"Popov's locus");
+//    plot->plot_tyspkin_locus(locus,Qt::black,2,true,"Popov's locus");
+    plot->plot_tyspkin_locus(locus,2,"Popov's locus");
+    plot->plot_stability_margin(locus);
     plot->plot_popov_line(locus.getP_x(),locus.getP_y());
+
 
 }
 
@@ -563,6 +566,7 @@ void MainWindow::on_actionRobust_Popov_Locus_triggered()
     plot->plot_tyspkin_locus(locus1,Qt::red,1,false,"Popov's locus MIN");
 
     w.generate_tsypkin_locus(locus1,w_polynomial::a_max,w_polynomial::b_max,w_polynomial::k,w_polynomial::q);
-    plot->plot_tyspkin_locus(locus1,Qt::green,1,false,"Popov's locus MAX");
+    plot->plot_tyspkin_locus(locus1,Qt::green,1,false,"Popov's locus MAX");    
 
+    plot->is_robust_stable(locus);
 }

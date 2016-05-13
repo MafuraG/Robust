@@ -1,4 +1,5 @@
 #include "plot_data.h"
+#include <QDebug>
 
 plot_data::plot_data()
 {
@@ -84,4 +85,53 @@ void plot_data::setMin_d(double value)
 {
     min_d = value;
 }
+
+double plot_data::getMax_d() const
+{
+    return max_d;
+}
+
+void plot_data::setMax_d(double value)
+{
+    max_d = value;
+}
+
+QVector2D plot_data::getLineStart() const
+{
+    return lineStart;
+}
+
+void plot_data::setLineStart(const QVector2D &value)
+{
+    lineStart = value;
+}
+
+QVector2D plot_data::getIntersect(double x1, double y1, double x2, double y2, float x0, float y0){
+    double A = y1 - y2 ;
+    //qDebug()<<"A:"<<A;
+    double B = x2 - x1 ;
+    //qDebug()<<"B:"<<B;
+    double C = x1 * y2 - x2 * y1;
+    //qDebug()<<"C:"<<C;
+
+    double x = (B*(B*x0 - A*y0) - A*C)/(A*A + B*B);
+    double y = (A*(-1 * B*x0 + A*y0) - B*C)/(A*A + B*B);
+
+    return QVector2D((float)x, (float)y);
+}
+
+void plot_data::setLineStart(const double x0, const double y0)
+{
+    QVector2D value = QVector2D((float)x0,(float)y0);
+    lineStart = value;
+}
+
+QVector2D plot_data::getLineEnd()
+{
+    return getIntersect(getP_x()[0],getP_y()[0],getP_x()[1],getP_y()[1],getLineStart().x(),getLineStart().y());
+}
+
+
+
+
 
