@@ -169,8 +169,8 @@ void w_polynomial::determine_stability(plot_data &data)
         }else {
             if (d < min_d){
                 min_d = d;
-                data.setLineStart((float)x0,(float)y0);
                 data.setMin_d(min_d);
+                data.setLineStart((float)x0,(float)y0);                
             }
         }
     }    
@@ -305,7 +305,7 @@ void w_polynomial::get_freq_response(std::deque<QVector3D> &_3D_points, const in
             continue;
         }
         p_W = W;
-        W = Nw/Pw;
+        W = Nw/Pw;        
 
         //curr = QVector3D(W.real(), w*W.imag(),0);
         curr = QVector3D(W.real(), W.imag(),0);
@@ -313,7 +313,7 @@ void w_polynomial::get_freq_response(std::deque<QVector3D> &_3D_points, const in
         _3D_points.push_back(curr);
 
         w += _step ;
-        //qDebug()<<"x "<<x<<" w "<<w <<"w real "<<W.real()<<" w_imag"<<W.imag();
+        qDebug()<<"x "<<x<<" w "<<w <<"w real "<<W.real()<<" w_imag"<<w*W.imag();
     }
     while (w < 0.01);
 

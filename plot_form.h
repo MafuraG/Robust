@@ -32,11 +32,12 @@ public:
     void is_plot_stable(const plot_data &locus);    
     void is_plot_stable(const QList<plot_data> &locus);
     bool is_robust_stable(const QList<plot_data> &locus);
+    void plot_stability_margin(plot_data &locus);
 private:
     Ui::plot_form *ui;    
     double get_stability_margin(const QList<plot_data> &locus);
     void split_locus_by_quadrants(QVector<double> &x , QVector<double> &y, QList<QVector<double> > &quadrants);
-    void plot_stability_margin(plot_data &locus);
+
 };
 
 #endif // PLOT_FORM_H
